@@ -1,26 +1,751 @@
-@import "tailwindcss";
+@import '@fontsource/space-mono/400.css';
+@import '@fontsource/space-mono/700.css';
+@import '@fontsource/ibm-plex-serif/400.css';
+@import '@fontsource/ibm-plex-serif/700.css';
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Serif:wght@400;600&family=Merriweather:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
+  --accent-color: #E63946;
+  --secondary-color: #457B9D;
+  --foreground: #000000;
   --background: #ffffff;
-  --foreground: #171717;
+  --accent: #e63946;
+  --secondary: #457b9d;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'IBM Plex Serif', serif;
+  color: var(--foreground);
+  background: var(--background);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+  }
+}
+
+@layer components {
+  /* Bible Verse Styles */
+  .bible-verse {
+    @apply border-l-4 border-[#E63946] pl-4 py-2;
+    background: linear-gradient(to right, rgba(230, 57, 70, 0.05), transparent);
+  }
+
+  .bible-verse h3 {
+    @apply text-[#E63946];
+    font-family: 'Merriweather', serif;
+  }
+
+  .bible-verse p {
+    @apply text-gray-800;
+    font-family: 'IBM Plex Serif', serif;
+  }
+
+  /* Church Schedule Styles */
+  .schedule-game {
+    @apply border-l-4 border-[#E63946] pl-4 py-2 mb-4;
+    background: linear-gradient(to right, rgba(230, 57, 70, 0.05), transparent);
+  }
+
+  .schedule-game.home {
+    @apply border-l-[#457B9D];
+    background: linear-gradient(to right, rgba(69, 123, 157, 0.05), transparent);
+  }
+
+  .schedule-game.away {
+    @apply border-l-[#E63946];
+    background: linear-gradient(to right, rgba(230, 57, 70, 0.05), transparent);
+  }
+
+  .schedule-game .game-header {
+    @apply flex justify-between items-start mb-2;
+  }
+
+  .schedule-game .game-date {
+    @apply font-bold text-gray-800;
+  }
+
+  .schedule-game .game-opponent {
+    @apply text-right;
+  }
+
+  .schedule-game .game-result {
+    @apply text-lg font-bold mb-2;
+  }
+
+  .schedule-game .game-events {
+    @apply text-sm text-gray-600;
+  }
+
+  .zine-container {
+    @apply max-w-3xl mx-auto px-4 py-8;
+  }
+  
+  .zine-title {
+    @apply text-4xl md:text-6xl font-bold mb-8 text-center;
+  }
+  
+  .zine-section {
+    @apply mb-16;
+    margin-top: 2rem;
+  }
+  
+  .zine-text {
+    @apply text-lg leading-relaxed;
+  }
+  
+  .zine-button {
+    @apply px-6 py-2 border-2 border-black hover:bg-black hover:text-white transition-colors duration-200;
+  }
+
+  /* Wes Anderson-inspired styles */
+  .playbill-card {
+    @apply bg-white p-6 border-2 border-black relative;
+    transition: all 0.3s ease;
+    background-image: 
+      linear-gradient(45deg, rgba(0,0,0,0.02) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(0,0,0,0.02) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.02) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.02) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  }
+
+  .playbill-card::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 1px solid var(--foreground);
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .playbill-card:hover {
+    @apply transform -translate-y-1 shadow-lg;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .playbill-title {
+    @apply font-mono text-3xl md:text-4xl mb-6 relative inline-block;
+    margin-top: 1rem;
+  }
+
+  .playbill-title::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--foreground);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+  }
+
+  .playbill-title:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .playbill-subtitle {
+    @apply font-serif text-lg md:text-xl text-gray-600 italic mb-8;
+  }
+
+  .playbill-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8;
+  }
+
+  .playbill-divider {
+    @apply h-px bg-black my-12 relative;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .playbill-divider::before,
+  .playbill-divider::after {
+    content: '•';
+    @apply absolute top-1/2 -translate-y-1/2 text-2xl;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .playbill-divider::before {
+    @apply left-0;
+    margin-left: -0.5rem;
+  }
+
+  .playbill-divider::after {
+    @apply right-0;
+    margin-right: -0.5rem;
+  }
+
+  /* Decorative Elements */
+  .vintage-border {
+    position: relative;
+    border: 2px solid var(--foreground);
+    padding: 1rem;
+  }
+
+  .vintage-border::before,
+  .vintage-border::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--foreground);
+  }
+
+  .vintage-border::before {
+    top: -2px;
+    left: -2px;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .vintage-border::after {
+    bottom: -2px;
+    right: -2px;
+    border-left: none;
+    border-top: none;
+  }
+
+  .vintage-corner {
+    position: relative;
+  }
+
+  .vintage-corner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    border-top: 3px solid var(--foreground);
+    border-left: 3px solid var(--foreground);
+    transform: rotate(45deg);
+    transform-origin: top left;
+  }
+
+  .vintage-divider {
+    position: relative;
+    height: 2px;
+    background: var(--foreground);
+    margin: 1rem 0;
+  }
+
+  .vintage-divider::before,
+  .vintage-divider::after {
+    content: '•';
+    position: absolute;
+    top: -8px;
+    font-size: 1.5rem;
+    color: var(--foreground);
+  }
+
+  .vintage-divider::before {
+    left: 0;
+  }
+
+  .vintage-divider::after {
+    right: 0;
+  }
+
+  /* MTG Card Styles */
+  .mtg-card {
+    width: 300px;
+    background: #f9f4e8;
+    border: 2px solid #8a5c2f;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    font-family: 'Merriweather', serif;
+    margin: 1rem;
+    overflow: hidden;
+  }
+
+  .mtg-card-header {
+    background: #e8d3b9;
+    padding: 0.5rem;
+    text-align: center;
+    border-bottom: 1px solid #8a5c2f;
+  }
+
+  .mtg-card-name {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #5a3d1e;
+  }
+
+  .mtg-card-type-line {
+    font-size: 0.9rem;
+    color: #7a5c3e;
+    margin-top: 0.2rem;
+  }
+
+  .mtg-card-image {
+    text-align: center;
+    padding: 1rem;
+    background: #fffaf2;
+  }
+
+  .mtg-card-art {
+    font-size: 3rem;
+  }
+
+  .mtg-card-text {
+    padding: 0.5rem 1rem;
+    font-style: italic;
+    color: #555;
+  }
+
+  .mtg-card-stats {
+    padding: 0.5rem 1rem;
+    background: #f3e8d3;
+    border-top: 1px solid #8a5c2f;
+  }
+
+  .mtg-card-stat {
+    font-size: 0.85rem;
+    color: #333;
+  }
+
+  .mtg-card-footer {
+    background: #e8d3b9;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    text-align: right;
+    border-top: 1px solid #8a5c2f;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* Scorecard Styles */
+  .scorecard-container {
+    @apply bg-white p-6 rounded-lg;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .scorecard-header {
+    @apply border-b border-gray-300 pb-4;
+  }
+
+  .scorecard-grid {
+    @apply mt-4;
+  }
+
+  .scorecard-grid input {
+    @apply bg-transparent;
+  }
+
+  .scorecard-grid input:focus {
+    @apply bg-gray-50;
+  }
+
+  .scorecard-grid textarea {
+    @apply bg-transparent;
+  }
+
+  .scorecard-grid textarea:focus {
+    @apply bg-gray-50;
+  }
+
+  .bingo-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--background);
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .bingo-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .bingo-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .bingo-cell {
+    aspect-ratio: 1;
+    background: var(--background);
+    border: 2px solid var(--accent);
+    border-radius: 4px;
+    padding: 0.5rem;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.9rem;
+    line-height: 1.2;
+  }
+
+  .bingo-cell:hover {
+    background: var(--accent);
+    color: var(--background);
+    transform: scale(1.05);
+  }
+
+  .bingo-cell.marked {
+    background: var(--accent);
+    color: var(--background);
+  }
+
+  .bingo-cell.marked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    opacity: 0.5;
+  }
+
+  .bingo-cell-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .bingo-cell-description {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--background);
+    border: 1px solid var(--accent);
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    width: 200px;
+    z-index: 2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 0.5rem;
+  }
+
+  .bingo-legend {
+    text-align: center;
+    padding: 1rem;
+    background: var(--background);
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+  }
+
+  .bingo-legend ul {
+    text-align: left;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+/* Print Button Styles */
+.print-button {
+  @apply mt-4 px-4 py-2 bg-white border-2 border-black text-black hover:bg-black hover:text-white transition-colors duration-200 text-sm font-mono;
+}
+
+/* Print-only elements */
+.print-only {
+  display: none;
+}
+
+@media print {
+  .print-only {
+    display: block;
+  }
+
+  .print-player-card {
+    width: 2.5in;
+    height: 3.5in;
+    margin: 0;
+    padding: 0;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    page-break-after: always;
+  }
+
+  .print-player-content {
+    width: 2.25in;
+    height: 3.25in;
+    padding: 0.125in;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Card Border */
+  .print-card-border {
+    width: 100%;
+    height: 100%;
+    border: 0.02in solid #000;
+    border-radius: 0.1in;
+    background: linear-gradient(45deg, rgba(0,0,0,0.02) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(0,0,0,0.02) 25%, transparent 25%);
+    background-size: 0.1in 0.1in;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Card Header */
+  .print-card-header {
+    width: 100%;
+    padding: 0.1in;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.05), transparent);
+    border-bottom: 0.01in solid #000;
+  }
+
+  .print-player-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.25in;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .print-player-position {
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 0.15in;
+    color: var(--secondary);
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  /* Card Image Area */
+  .print-card-image {
+    width: 100%;
+    height: 1.5in;
+    background: linear-gradient(45deg, rgba(0,0,0,0.02) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(0,0,0,0.02) 25%, transparent 25%);
+    background-size: 0.1in 0.1in;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 0.01in solid #000;
+    position: relative;
+  }
+
+  .print-player-illustration {
+    font-size: 0.8in;
+    color: var(--accent);
+    text-shadow: 0.02in 0.02in 0 rgba(0,0,0,0.1);
+  }
+
+  /* Card Stats */
+  .print-card-stats {
+    width: 100%;
+    padding: 0.1in;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 0.01in solid #000;
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.02));
+  }
+
+  .print-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .print-stat-label {
+    font-size: 0.12in;
+    color: var(--secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .print-stat-value {
+    font-size: 0.15in;
+    color: #000;
+    font-weight: bold;
+  }
+
+  /* Card Details */
+  .print-card-details {
+    width: 100%;
+    padding: 0.1in;
+    flex-grow: 1;
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 0.12in;
+    line-height: 1.4;
+    color: #000;
+  }
+
+  .print-card-ability {
+    margin: 0.05in 0;
+    padding: 0 0.1in;
+  }
+
+  /* Card Footer */
+  .print-card-footer {
+    width: 100%;
+    padding: 0.1in;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 0.01in solid #000;
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.05));
+    font-family: 'Space Mono', monospace;
+    font-size: 0.12in;
+  }
+
+  .print-card-team {
+    color: var(--secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .print-card-year {
+    color: #000;
+    font-weight: bold;
+  }
+
+  /* Hide non-printable elements */
+  .no-print,
+  .playbill-card,
+  .print-button {
+    display: none !important;
+  }
+}
+
+/* Print Zine Styles */
+@media print {
+  .print-zine {
+    width: 8.5in;
+    height: 11in;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    font-family: 'IBM Plex Serif', serif;
+  }
+
+  .print-page {
+    width: 8.5in;
+    height: 11in;
+    padding: 0.75in;
+    box-sizing: border-box;
+    position: relative;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    page-break-after: always;
+  }
+
+  .print-page:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 0.5in,
+      #000 0.5in,
+      #000 0.51in
+    );
+  }
+
+  .print-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Front cover specific styles */
+  .front-cover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, rgba(0,0,0,0.02) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(0,0,0,0.02) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.02) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.02) 75%);
+    background-size: 20px 20px;
+  }
+
+  /* Inside pages specific styles */
+  .inside-left,
+  .inside-center,
+  .inside-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Back cover specific styles */
+  .back-cover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Hide non-printable elements */
+  .no-print,
+  .playbill-card,
+  .print-button {
+    display: none !important;
+  }
+}
+
+/* Print-specific card styles */
+.print-card {
+  background: white !important;
+  border: 1px solid var(--accent) !important;
+  box-shadow: none !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.print-card:hover {
+  background: white !important;
+  transform: none !important;
 }
