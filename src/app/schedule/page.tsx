@@ -1,4 +1,4 @@
-import ChurchSchedule from '@/components/ChurchSchedule';
+import ChurchSchedule from '../../components/ChurchSchedule';
 
 export default function SchedulePage() {
   return (

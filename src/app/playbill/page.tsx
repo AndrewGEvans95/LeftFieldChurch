@@ -1,7 +1,7 @@
-import BaseballCard from '@/components/BaseballCard';
-import PlaybillAd from '@/components/PlaybillAd';
-import PrintableZine from '@/components/PrintableZine';
-import PrintButton from '@/components/PrintButton';
+import BaseballCard from '../../components/BaseballCard';
+import PlaybillAd from '../../components/PlaybillAd';
+import PrintableZine from '../../components/PrintableZine';
+import PrintButton from '../../components/PrintButton';
 
 export default function Playbill() {
   // Collect all players for the printable zine
