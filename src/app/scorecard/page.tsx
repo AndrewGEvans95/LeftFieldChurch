@@ -1,6 +1,6 @@
 'use client';
 
-import Scorecard from '@/components/Scorecard';
+import Scorecard from '../../components/Scorecard';
 
 export default function ScorecardPage() {
   return (

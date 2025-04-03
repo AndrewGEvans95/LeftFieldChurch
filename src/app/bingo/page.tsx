@@ -1,6 +1,6 @@
 'use client';
 
-import BingoCard from '@/components/BingoCard';
+import BingoCard from '../../components/BingoCard';
 
 export default function BingoPage() {
   return (
