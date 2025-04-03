@@ -48,8 +48,8 @@ const games = [
     opponent: 'Sugar Land Space Cowboys',
     time: '6:35 PM',
     location: 'home',
-    result: 'Scheduled',
-    events: []
+    result: 'W, 6-1',
+    events: ['WP: Tamarez.']
   },
   {
     id: 'game-6',

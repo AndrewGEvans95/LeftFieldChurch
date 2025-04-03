@@ -516,9 +516,9 @@ export default function Playbill() {
 
         {/* Footer */}
         <div className="mt-12 pt-8 vintage-divider text-center text-sm">
-          <p>© 2025 Durham Bulls Baseball Club</p>
-          <p className="italic mt-2">A production of the Tampa Bay Rays organization</p>
-          <p className="mt-4 text-xs">No baseballs were harmed in the making of this playbill.</p>
+          <p>© 2025 Left Field Church</p>
+          <p className="italic mt-2">A sacred mess from the fine folks at Left Field Church</p>
+          <p className="mt-4 text-xs">Blessing the bleachers since way before the pitch clock.</p>
         </div>
       </div>
     </div>

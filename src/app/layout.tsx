@@ -54,7 +54,7 @@ export default function RootLayout({
         </main>
         <footer className="border-t-2 border-black py-4 mt-8">
           <div className="zine-container text-center text-sm">
-            © {new Date().getFullYear()} Baseball Zine
+            © {new Date().getFullYear()} Left Field Church
           </div>
         </footer>
       </body>

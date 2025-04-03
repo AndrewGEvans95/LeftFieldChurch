@@ -161,7 +161,7 @@ export default function Home() {
             </p>
           </div>
         </div>
-      </div>
-    </main>
+        </div>
+      </main>
   );
 }

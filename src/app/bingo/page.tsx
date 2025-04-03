@@ -7,8 +7,7 @@ export default function BingoPage() {
     <div className="zine-container">
       <h1 className="zine-title">Left Field Church Bingo</h1>
       <p className="text-center mb-8">
-        Make your next Bulls game even more fun with our interactive bingo card!
-        Watch for these special moments and mark them off as they happen.
+      Keep the faith, mark your squares, and act like you’ve been here before.
       </p>
       <BingoCard />
       <style jsx global>{`
