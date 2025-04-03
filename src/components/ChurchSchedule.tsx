@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { Game } from '@/types/game';
-import Link from 'next/link';
 
 export default function ChurchSchedule() {
   const [games, setGames] = useState<Game[]>([]);
@@ -76,7 +75,13 @@ export default function ChurchSchedule() {
         <h3 className="text-xl font-semibold mb-3">Previous Services</h3>
         <div className="space-y-4">
           {pastGames.slice(-2).map((game) => (
-            <Link href={`/scorecard/${game.id}`} key={game.id} className="block">
+            <a
+              href="https://www.milb.com/durham/schedule/2025-04"
+              target="_blank"
+              rel="noopener noreferrer"
+              key={game.id}
+              className="block"
+            >
               <div className={`schedule-game ${game.location}`}>
                 <div className="game-header">
                   <div className="game-date">
@@ -100,7 +105,7 @@ export default function ChurchSchedule() {
                   </div>
                 )}
               </div>
-            </Link>
+            </a>
           ))}
         </div>
       </div>
@@ -110,7 +115,13 @@ export default function ChurchSchedule() {
         <h3 className="text-xl font-semibold mb-3">Upcoming Services</h3>
         <div className="space-y-4">
           {upcomingGames.slice(0, 3).map((game) => (
-            <Link href={`/scorecard/${game.id}`} key={game.id} className="block">
+            <a
+              href="https://www.milb.com/durham/schedule/2025-04"
+              target="_blank"
+              rel="noopener noreferrer"
+              key={game.id}
+              className="block"
+            >
               <div className={`schedule-game ${game.location}`}>
                 <div className="game-header">
                   <div className="game-date">
@@ -129,7 +140,7 @@ export default function ChurchSchedule() {
                   </div>
                 )}
               </div>
-            </Link>
+            </a>
           ))}
         </div>
       </div>
