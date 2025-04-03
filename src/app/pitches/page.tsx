@@ -106,11 +106,7 @@ export default function PitchesPage() {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <PrintButton filename="baseball-pitches">
-            <PrintablePitches pitches={pitches} />
-          </PrintButton>
-        </div>
+       
       </div>
     </main>
   );

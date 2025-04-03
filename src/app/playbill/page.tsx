@@ -23,8 +23,6 @@ export default function Playbill() {
 
   return (
     <div className="zine-container relative">
-      {/* Print Button */}
-      <PrintButton />
 
       {/* Printable Zine */}
       <div className="hidden print:block">
