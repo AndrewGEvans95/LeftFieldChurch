@@ -18,7 +18,8 @@ export default function Navigation() {
     { href: '/', label: 'Home' },
     { href: '/schedule', label: 'Schedule' },
     { href: '/bingo', label: 'Bingo' },
-    { href: '/pitches', label: 'Pitches' },
+    { href: '/pitches', label: 'Gospel Pitches' },
+    { href: '/zine', label: 'Clergy' },
   ];
 
   return (
