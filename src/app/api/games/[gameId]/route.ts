@@ -33,12 +33,10 @@ const games = [
   }
 ];
 
-export async function GET(
-  request: Request,
-  { params }: { params: { gameId: string } }
-) {
+export async function GET(request: Request) {
   try {
-    const game = games.find(g => g.id === params.gameId);
+    const gameId = request.url.split('/').pop();
+    const game = games.find(g => g.id === gameId);
     
     if (!game) {
       return NextResponse.json({ error: 'Game not found' }, { status: 404 });

@@ -6,7 +6,7 @@ import { Game } from '@/types/game';
 
 export default function GameScorecard() {
   const params = useParams();
-  const gameId = params.id as string;
+  const gameId = params.gameId as string;
   const [game, setGame] = useState<Game | null>(null);
   const [loading, setLoading] = useState(true);
 

@@ -6,7 +6,7 @@ export default function SchedulePage() {
       <h1 className="zine-title">The Church Schedule</h1>
       <p className="text-xl text-center mb-12 italic">All Upcoming Services at the Church of Baseball</p>
       
-      <ChurchSchedule abbreviated={false} />
+      <ChurchSchedule />
     </main>
   );
 } 

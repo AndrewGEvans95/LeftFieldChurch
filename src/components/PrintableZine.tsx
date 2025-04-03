@@ -1,18 +1,15 @@
 'use client';
 
-import BaseballCard from '@/components/BaseballCard';
+import React from 'react';
+import { Player } from '../types/player';
 
 interface PrintableZineProps {
-  players: {
-    name: string;
-    position: string;
-    details: string[];
-  }[];
+  players: Player[];
 }
 
-export default function PrintableZine({ players }: PrintableZineProps) {
+const PrintableZine: React.FC<PrintableZineProps> = ({ players }) => {
   return (
-    <div className="print-zine">
+    <div className="printable-zine">
       {/* Front Cover */}
       <div className="print-page front-cover">
         <div className="print-content">
@@ -82,6 +79,20 @@ export default function PrintableZine({ players }: PrintableZineProps) {
           <div className="print-page-number">5</div>
         </div>
       </div>
+
+      {players.map((player, index) => (
+        <div key={index} className="player-card">
+          <h3>{player.name}</h3>
+          <p>{player.position}</p>
+          <ul>
+            {player.details.map((detail, i) => (
+              <li key={i}>{detail}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
   );
-} 
+};
+
+export default PrintableZine; 

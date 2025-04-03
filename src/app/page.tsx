@@ -15,7 +15,11 @@ export default function Home() {
         </p>
       </div>
 
-      <ChurchSchedule abbreviated={true} />
+      <div className="zine-section">
+        <h2 className="text-2xl font-bold mb-4">Church Schedule</h2>
+      </div>
+
+      <ChurchSchedule />
 
       <div className="zine-section">
         <h2 className="text-2xl font-bold mb-4">The Gospel of Baseball</h2>

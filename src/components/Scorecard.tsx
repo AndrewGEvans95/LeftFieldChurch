@@ -3,12 +3,18 @@
 interface ScorecardProps {
   homeTeam: string;
   awayTeam: string;
+  date: string;
+  location: string;
 }
 
-export default function Scorecard({ homeTeam, awayTeam }: ScorecardProps) {
+const Scorecard: React.FC<ScorecardProps> = ({ homeTeam, awayTeam, date, location }) => {
   return (
     <div className="scorecard-container">
       <div className="scorecard">
+        <div className="game-info">
+          <h2>{homeTeam} vs {awayTeam}</h2>
+          <p>{date} at {location}</p>
+        </div>
         <div className="scorecard-header">
           <div className="team-name">{homeTeam}</div>
           <div className="innings">
@@ -194,4 +200,6 @@ export default function Scorecard({ homeTeam, awayTeam }: ScorecardProps) {
       `}</style>
     </div>
   );
-} 
+};
+
+export default Scorecard; 

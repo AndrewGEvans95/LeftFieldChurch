@@ -1,0 +1,11 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /api/*
+Disallow: /_*
+
+# Host
+Host: https://baseball-zine.vercel.app
+
+# Sitemaps
+Sitemap: https://baseball-zine.vercel.app/sitemap.xml
