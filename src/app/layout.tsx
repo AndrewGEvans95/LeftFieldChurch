@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from '../components/Navigation'
+import Image from 'next/image';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,9 +30,22 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <header className="bg-white shadow-sm">
-          <div className="max-w-7xl mx-auto px-4 py-2 sm:px-6 lg:px-8">
-            <h1 className="text-2xl font-bold">Left Field Church</h1>
-            <h2 className="text-xl text-gray-600">A Durham Baseball Bible Zine</h2>
+          <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
+            <div className="flex items-center gap-4">
+              <div className="relative w-16 h-16 flex-shrink-0">
+                <Image
+                  src="/images/logo.png"
+                  alt="Left Field Church Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold">Left Field Church</h1>
+                <h2 className="text-xl text-gray-600">A Durham Baseball Bible Zine</h2>
+              </div>
+            </div>
           </div>
         </header>
         <Navigation />
