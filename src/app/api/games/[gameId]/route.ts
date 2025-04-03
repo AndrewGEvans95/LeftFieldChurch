@@ -133,9 +133,16 @@ const games = [
   }
 ];
 
-export async function GET(request: NextRequest, { params }: { params: { gameId: string } }) {
+type RouteContext = {
+  params: {
+    gameId: string;
+  };
+};
+
+export async function GET(request: NextRequest, context: RouteContext) {
   try {
-    const game = games.find(g => g.id === params.gameId);
+    const { gameId } = await context.params;
+    const game = games.find(g => g.id === gameId);
     
     if (!game) {
       return NextResponse.json({ error: 'Game not found' }, { status: 404 });
